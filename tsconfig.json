@@ -5,15 +5,11 @@
         "noUnusedParameters": true,
         "suppressImplicitAnyIndexErrors": true,
         "noImplicitReturns": true,
-        "lib": [
-            "dom",
-            "es7"
-        ],
+        "lib": ["dom", "es7"],
+        "declaration": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "outDir": "build"
+        "outDir": "lib"
     },
-  "include": [
-    "src/**/*"
-  ]
+    "include": ["src/**/*"]
 }

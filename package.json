@@ -2,8 +2,8 @@
   "name": "code-owners-api",
   "version": "1.0.0",
   "description": "A lightweight npm module to interact with github codeowners",
-  "main": "build/index.js",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
