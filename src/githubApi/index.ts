@@ -1,2 +1,2 @@
 export * from './codeownerLocator';
-export * from './user';
+export * from './getUserTeamsNames';

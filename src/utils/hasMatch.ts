@@ -1,13 +1,12 @@
 import * as anymatch from 'anymatch';
 import {MappedData} from '../types';
 
-const startWithBackslash = (str: string) =>
-    str.startsWith('/') ? str : `/${str}`;
+const startWithBackslash = (str: string) => (str.startsWith('/') ? str : `/${str}`);
 
-const hasMatch = (mappedFile: MappedData[], codeOwner: string, path: string) =>
+const hasMatch = (mappedFile: MappedData[], codeOwners: string[], path: string) =>
     mappedFile.some(
         x =>
-            x.owners.includes(codeOwner) &&
+            x.owners.some(o => codeOwners.includes(o)) &&
             anymatch(`${startWithBackslash(x.path)}*`, startWithBackslash(path))
     );
 
