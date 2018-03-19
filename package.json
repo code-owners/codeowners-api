@@ -6,6 +6,7 @@
     "types": "lib/index.d.js",
     "scripts": {
         "build": "tsc -p tsconfig.json",
+        "watch": "tsc -w -p tsconfig.json",
         "precommit": "lint-staged"
     },
     "devDependencies": {
@@ -24,6 +25,6 @@
         "anymatch": "^2.0.0"
     },
     "lint-staged": {
-        "*.{js,ts}": ["prettier --single-quote --trailing-comma es5 --no-bracket-spacing --write", "git add"]
+        "*.{js,ts}": ["prettier --single-quote --tab-width 4 --trailing-comma es5 --no-bracket-spacing --write", "git add"]
     }
 }
