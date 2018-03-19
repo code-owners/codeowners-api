@@ -42,7 +42,7 @@ export default class Codeowner {
     paths: string[],
     codeOwner: string
   ): Promise<string[]> {
-    const mappedFile = await this.mapCodeOwnersFile();
+    const mappedFile = await this.mapCodeownersFile();
     return paths.filter(requestedPath =>
       this.hasSingleMatch(mappedFile, codeOwner, requestedPath)
     );
@@ -58,7 +58,7 @@ export default class Codeowner {
     );
   }
 
-  private async mapCodeOwnersFile(): Promise<MappedData[]> {
+  private async mapCodeownersFile(): Promise<MappedData[]> {
     const data = await this.getCodeownersFile();
     return data
       .split('\n')
