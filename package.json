@@ -1,7 +1,7 @@
 {
     "name": "code-owners-api",
     "version": "1.0.0",
-    "description": "A lightweight npm module to interact with github codeowners",
+    "description": "Simple module to interact with github codeowners",
     "main": "lib/index.js",
     "types": "lib/index.d.js",
     "scripts": {
