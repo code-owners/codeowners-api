@@ -5,8 +5,8 @@ const mapCodeownersFile = (codeownersFileContent: string): MappedData[] => {
         .split('\n')
         .filter(x => x && !x.startsWith('#'))
         .map(x => {
-            const [pathString, ...owners] = x.split(/\s+/);
-            return {pathString, owners};
+            const [path, ...owners] = x.split(/\s+/);
+            return {path, owners};
         });
 };
 

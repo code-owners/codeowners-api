@@ -4,6 +4,6 @@ export type RepoInfo = {
 };
 
 export type MappedData = {
-    pathString: string;
+    path: string;
     owners: string[];
 };
