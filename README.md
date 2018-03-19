@@ -1,2 +1,2 @@
 # codeowners
-A lightweight npm module to interact with github codeowners
+Simple module to interact with github codeowners
