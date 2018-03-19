@@ -31,8 +31,10 @@ export default class Codeowner {
   public async getCodeownersFile(): Promise<string> {
     const locator = new CodeownerLocator(this.repo, this.auth);
     const path = await locator.locateCodeownersFile();
-    const file = await new octokit().repos.getContent({path, ...this.repo});
 
+    const octo = await new octokit();
+    this.auth && octo.authenticate(this.auth);
+    const file = await octo.repos.getContent({path, ...this.repo});
     return Buffer.from(file.data.content, 'base64').toString();
   }
 
