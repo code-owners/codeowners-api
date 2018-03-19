@@ -18,7 +18,7 @@
         "typescript": "^2.4.2"
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^15.2.4",
         "anymatch": "^2.0.0"
