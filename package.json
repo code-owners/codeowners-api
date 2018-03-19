@@ -1,5 +1,5 @@
 {
-    "name": "code-owners-api",
+    "name": "codeowners-api",
     "version": "1.0.0",
     "description": "Simple module to interact with github codeowners",
     "main": "lib/index.js",
