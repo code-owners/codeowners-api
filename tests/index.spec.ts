@@ -1,4 +1,4 @@
-import Codeowner from '../src/index';
+import {Codeowner} from '../src/index';
 import * as teamNames from '../src/githubApi/getUserTeamsNames';
 
 test('basic flow', async () => {

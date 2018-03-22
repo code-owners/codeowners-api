@@ -4,7 +4,7 @@ import {RepoInfo} from './types';
 import mapCodeownersFile from './utils/mapCodeownersFile';
 import hasMatch from './utils/hasMatch';
 
-export default class Codeowner {
+export class Codeowner {
     repo: RepoInfo;
     auth?: octokit.Auth;
 
