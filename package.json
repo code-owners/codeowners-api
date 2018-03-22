@@ -7,7 +7,9 @@
     "scripts": {
         "build": "tsc -p tsconfig.json",
         "watch": "tsc -w -p tsconfig.json",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "devDependencies": {
         "@types/anymatch": "^1.3.0",
@@ -22,9 +24,14 @@
     "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^15.2.4",
-        "anymatch": "^2.0.0"
+        "@types/jest": "^22.2.0",
+        "anymatch": "^2.0.0",
+        "jest": "^22.4.3"
     },
     "lint-staged": {
-        "*.{js,ts}": ["prettier --single-quote --tab-width 4 --trailing-comma es5 --no-bracket-spacing --print-width 120 --write", "git add"]
+        "*.{js,ts}": [
+            "prettier --single-quote --tab-width 4 --trailing-comma es5 --no-bracket-spacing --print-width 120 --write",
+            "git add"
+        ]
     }
 }

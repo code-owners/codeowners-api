@@ -4,8 +4,6 @@ import {RepoInfo} from './types';
 import mapCodeownersFile from './utils/mapCodeownersFile';
 import hasMatch from './utils/hasMatch';
 
-export {getUserTeamsNames};
-
 export default class Codeowner {
     repo: RepoInfo;
     auth?: octokit.Auth;
@@ -15,7 +13,7 @@ export default class Codeowner {
         this.auth = auth;
     }
 
-    public async isCodeownersFileExists() {
+    public async codeownersFileExists(): Promise<boolean> {
         try {
             const locator = new CodeownerLocator(this.repo, this.auth);
             return !!await locator.locateCodeownersFile();
@@ -39,7 +37,6 @@ export default class Codeowner {
         const mappedFile = mapCodeownersFile(codeowner);
 
         const teams = this.auth ? await getUserTeamsNames(this.auth) : [];
-
         return paths.filter(requestedPath => hasMatch(mappedFile, [codeOwner, ...teams], requestedPath));
     }
 }
