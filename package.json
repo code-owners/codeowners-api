@@ -10,7 +10,8 @@
         "precommit": "lint-staged",
         "test": "jest",
         "test:watch": "jest --watch",
-        "prepush": "npm run test"
+        "prepush": "npm run test",
+        "prepare": "npm run build"
     },
     "devDependencies": {
         "@types/anymatch": "^1.3.0",
