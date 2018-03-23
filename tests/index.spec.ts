@@ -9,5 +9,4 @@ test('basic flow', async () => {
         '@elayg'
     );
     expect(result.length).toEqual(1);
-    console.log('test passed!');
 });

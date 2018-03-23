@@ -1,4 +1,4 @@
-import * as octokit from '@octokit/rest';
+import {Auth} from '@octokit/rest';
 import {getUserTeamsNames, CodeownerLocator} from './githubApi';
 import {RepoInfo} from './types';
 import mapCodeownersFile from './utils/mapCodeownersFile';
@@ -6,9 +6,9 @@ import hasMatch from './utils/hasMatch';
 
 export class Codeowner {
     repo: RepoInfo;
-    auth?: octokit.Auth;
+    auth?: Auth;
 
-    constructor(repoParams: RepoInfo, auth?: octokit.Auth) {
+    constructor(repoParams: RepoInfo, auth?: Auth) {
         this.repo = repoParams;
         this.auth = auth;
     }
@@ -24,11 +24,7 @@ export class Codeowner {
 
     public async getCodeownersFile(): Promise<string> {
         const locator = new CodeownerLocator(this.repo, this.auth);
-        const path = await locator.locateCodeownersFile();
-
-        const octo = await new octokit();
-        this.auth && octo.authenticate(this.auth);
-        const file = await octo.repos.getContent({path, ...this.repo});
+        const file = await locator.getCodeownersFile();
         return Buffer.from(file.data.content, 'base64').toString();
     }
 

@@ -1,17 +1,5 @@
 const fs = require('fs');
 
-type UserTeamsResponse = {
-    data: {
-        name: string;
-        id: number;
-        slug: string;
-        organization: {
-            login: string;
-            id: number;
-        };
-    }[];
-};
-
 const getTestData = () => {
     const testData = fs.readFileSync(`${__dirname}/../../testModels/CODEOWNERS`);
     return Buffer.from(testData).toString('base64');
