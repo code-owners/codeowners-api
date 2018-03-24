@@ -1,2 +1,5 @@
 src/
 tests/
+jest.config.jest
+preprocessor.js
+tsconfig.json
