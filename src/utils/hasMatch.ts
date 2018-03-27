@@ -1,13 +1,15 @@
-import * as anymatch from 'anymatch';
+import ignore = require('ignore');
 import {MappedData} from '../types';
-
-const startWithBackslash = (str: string) => (str.startsWith('/') ? str : `/${str}`);
 
 const hasMatch = (mappedFile: MappedData[], codeOwners: string[], path: string) => {
     const match = mappedFile
         .slice()
         .reverse()
-        .find(x => anymatch(`${startWithBackslash(x.path)}*`, startWithBackslash(path)));
+        .find(x =>
+            ignore()
+                .add(x.path)
+                .ignores(path)
+        );
     if (!match) return false;
 
     return match.owners.some(o => codeOwners.includes(o));

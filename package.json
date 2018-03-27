@@ -28,7 +28,7 @@
     "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^15.2.4",
-        "anymatch": "^2.0.0"
+        "ignore": "^3.3.7"
     },
     "lint-staged": {
         "*.{js,ts}": [

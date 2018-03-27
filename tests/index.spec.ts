@@ -5,8 +5,9 @@ test('basic flow', async () => {
     const params = {repo: '', owner: ''};
     const codeOwnersApi = new Codeowner(params);
     const result = await codeOwnersApi.filterForCodeOwner(
-        ['/something/a.py', 'tests/something.js', 'tests/something.txt'],
-        '@elayg'
+        ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
+        '@elaygl'
     );
-    expect(result.length).toEqual(1);
+
+    expect(result.length).toEqual(2);
 });
