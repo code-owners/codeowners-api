@@ -8,6 +8,5 @@ test('basic flow', async () => {
         ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
         '@elaygl'
     );
-
     expect(result.length).toEqual(2);
 });
