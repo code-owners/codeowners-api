@@ -1,6 +1,6 @@
 # codeowners-api
 Simple module to interact with github [codeowners](https://help.github.com/articles/about-codeowners/)
-This npm module was implemented mainly to support the chrome extension - [codeowners-ext](//TODO)
+This npm module was implemented mainly to support the chrome extension - [codeowners-ext](https://github.com/code-owners/codeowners-ext)
 
 **Note on Github Oauth2 access tokens**
 In order to get all the teams a user is part of, you need to provide a Github access token.
