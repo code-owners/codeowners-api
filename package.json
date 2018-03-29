@@ -30,9 +30,9 @@
     ],
     "author": "Ore Poran & Elay Gliksberg",
     "bugs": {
-        "url": "https://github.com/elaygl/codeowners/issues"
+        "url": "https://github.com/code-owners/codeowners-api/issues"
     },
-    "homepage": "https://github.com/elaygl/codeowners#readme",
+    "homepage": "https://github.com/code-owners/codeowners-api",
     "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^15.2.4",
