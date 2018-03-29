@@ -24,7 +24,15 @@
         "prettier": "^1.11.1",
         "typescript": "^2.4.2"
     },
-    "author": "",
+    "keywords": [
+        "codeowners",
+        "github"
+    ],
+    "author": "Ore Poran & Elay Gliksberg",
+    "bugs": {
+        "url": "https://github.com/elaygl/codeowners/issues"
+    },
+    "homepage": "https://github.com/elaygl/codeowners#readme",
     "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^15.2.4",
