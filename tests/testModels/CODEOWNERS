@@ -1,5 +1,9 @@
 #This is a comment
+
 * @oreporan
-tests/*.txt @elayg
+/tests/*.txt @elaygl
+
 # Another Comment!!
-tests/test2/someFile.txt @oreporan
+/tests/test2/someFile.txt @oreporan
+
+/packages/some/ @elaygl

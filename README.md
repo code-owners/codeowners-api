@@ -1,4 +1,4 @@
-# codeowners
+# codeowners-api
 Simple module to interact with github [codeowners](https://help.github.com/articles/about-codeowners/)
 
 
