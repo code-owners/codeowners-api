@@ -1,11 +1,21 @@
+
+[![npm version](https://badge.fury.io/js/codeowners-api.svg)](https://badge.fury.io/js/codeowners-api)
+
 # codeowners-api
 Simple module to interact with github [codeowners](https://help.github.com/articles/about-codeowners/)
 This npm module was implemented mainly to support the chrome extension - [codeowners-ext](https://github.com/code-owners/codeowners-ext)
 
-**Note on Github Oauth2 access tokens**
+### Note on Github Oauth2 access tokens
 In order to get all the teams a user is part of, you need to provide a Github access token.
+The required permissions are:    
+* repos:public_repo
+* user:read:user    
+For private repos you would need to add access to private repos 
 
-## Getting Started
+## Quick start
+
+`> yarn add codeowners-api`
+
 ```ts
     import {Codeowner} from 'codeowners-api';
     
@@ -57,7 +67,7 @@ Returns `string` of the CODEOWNERS file in the given repo
 ## Testing
 `> yarn test` 
 
-## Sample Usage
+## Full Example
 Based on this `CODEOWNERS` file:
 ```
 #This is a comment
@@ -70,7 +80,8 @@ Based on this `CODEOWNERS` file:
 
 /packages/some/ @elaygl
 ```
-Will create this result:
+
+Will generate this result:
 ```ts
     import {Codeowner} from 'codeowners-api';
     
