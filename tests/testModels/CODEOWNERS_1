@@ -1,0 +1,10 @@
+#This is a comment
+
+* @oreporan
+/tests/*.txt @elaygl
+
+# Another Comment!!
+/tests/test2/someFile.txt @oreporan
+
+/packages/some/ @elaygl
+/team-packages/ @TestOrg/test-team

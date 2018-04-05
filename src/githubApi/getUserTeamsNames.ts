@@ -1,21 +1,21 @@
 import * as octokit from '@octokit/rest';
 
-type UserTeamsResponse = {
-    data: {
-        name: string;
+type Team = {
+    name: string;
+    id: number;
+    slug: string;
+    organization: {
+        login: string;
         id: number;
-        slug: string;
-        organization: {
-            login: string;
-            id: number;
-        };
-    }[];
+    };
 };
 
 export const getUserTeamsNames = async (auth: octokit.Auth) => {
     const octo = new octokit({});
     octo.authenticate(auth);
-    const res = (await octo.users.getTeams({})) as UserTeamsResponse;
+    const [authenticatedUser, teams] = await Promise.all([octo.users.get({}), octo.users.getTeams({})]);
 
-    return res.data.map(t => `@${t.organization.login}/${t.slug}`);
+    return teams.data
+        .map((t: Team) => `@${t.organization.login}/${t.slug}`)
+        .concat([`@${authenticatedUser.data.login}`]);
 };

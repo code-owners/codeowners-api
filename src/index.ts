@@ -28,11 +28,17 @@ export class Codeowner {
         return Buffer.from(file.data.content, 'base64').toString();
     }
 
-    public async filterForCodeOwner(paths: string[], user: string): Promise<string[]> {
+    public async filterForAuthenticatedUser(paths: string[]): Promise<string[]> {
         const codeowner = await this.getCodeownersFile();
         const mappedFile = mapCodeownersFile(codeowner);
 
         const teams = this.auth ? await getUserTeamsNames(this.auth) : [];
-        return paths.filter(requestedPath => hasMatch(mappedFile, [user, ...teams], requestedPath));
+        return paths.filter(requestedPath => hasMatch(mappedFile, [...teams], requestedPath));
+    }
+
+    public async filterForCodeOwners(paths: string[], users: string[]): Promise<string[]> {
+        const codeowner = await this.getCodeownersFile();
+        const mappedFile = mapCodeownersFile(codeowner);
+        return paths.filter(requestedPath => hasMatch(mappedFile, [...users], requestedPath));
     }
 }

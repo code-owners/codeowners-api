@@ -3,3 +3,5 @@ tests/
 jest.config.jest
 preprocessor.js
 tsconfig.json
+lib/liveTest.d.ts
+lib/liveTest.js

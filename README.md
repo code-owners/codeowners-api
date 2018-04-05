@@ -5,12 +5,48 @@ This npm module was implemented mainly to support the chrome extension - [codeow
 **Note on Github Oauth2 access tokens**
 In order to get all the teams a user is part of, you need to provide a Github access token.
 
+## Getting Started
+```ts
+    import {Codeowner} from 'codeowners-api';
+    
+    const repoParams = {repo: 'my-repo', owner: 'repo-owner'}
+    const authParams = {type: 'token', token: 'xxxx'}
+    
+    const codeOwnersApi = new Codeowner(repoParams, authParams);
+    const result = await codeOwnersApi.filterForCodeOwner(
+        ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
+        '@elaygl'
+    );
+
+    console.log(result) // [ 'tests/something.txt', 'packages/some/deep/dir/index.tsx' ]
+```
 
 ## API
 
-#### filterForCodeOwner(paths: string[], user: string)
-Given an array of paths and the name of a github user (prefixed with `@`), returns the paths that this user is the codeowner of. 
+#### filterForCodeOwners(paths: string[], users: string[])
+Given an array of paths and an array of github users/teams (prefixed with `@`), returns the paths that these users/teams are the codeowners of. 
+
+Example:
+```ts
+ const result = await codeOwnersApi.filterForCodeOwners(
+        ['package.json', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
+        ['@elaygl', '@Soluto/mobile-team']
+    );
+    console.log(result) // ['package.json']
+```
+
+#### filterForAuthenticatedUser(paths: string[])
+Given an array of paths, returns the paths that this authenticated user is the codeowner of (based on the Auth credentials passed in the constructor). 
 Using GithubAPI, the library will also get all the list of teams that this user is part of, inorder to return the mapping which includes this user, and all his/her teams
+
+Example:
+```ts
+ const result = await codeOwnersApi.filterForAuthenticatedUser(
+        ['package.json', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx']
+    );
+    console.log(result) // ['package.json']
+```
+
 
 #### codeownersFileExists()
 Returns `true` if a CODEOWNERS file exists for the given github repo
@@ -35,9 +71,13 @@ Based on this `CODEOWNERS` file:
 /packages/some/ @elaygl
 ```
 Will create this result:
-```js
-    const params = {repo: '', owner: '', auth: ''};
-    const codeOwnersApi = new Codeowner(params);
+```ts
+    import {Codeowner} from 'codeowners-api';
+    
+    const repoParams = {repo: 'my-repo', owner: 'repo-owner'}
+    const authParams = {type: 'token', token: 'xxxx'}
+    
+    const codeOwnersApi = new Codeowner(repoParams, authParams);
     const result = await codeOwnersApi.filterForCodeOwner(
         ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
         '@elaygl'
