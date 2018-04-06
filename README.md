@@ -23,7 +23,7 @@ For private repos you would need to add access to private repos
     const authParams = {type: 'token', token: 'xxxx'}
     
     const codeOwnersApi = new Codeowner(repoParams, authParams);
-    const result = await codeOwnersApi.filterForCodeOwner(
+    const result = await codeOwnersApi.filterForCodeOwners(
         ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
         '@elaygl'
     );

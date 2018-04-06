@@ -11,7 +11,6 @@ const hasMatch = (mappedFile: MappedData[], codeOwners: string[], path: string) 
                 .ignores(path)
         );
     if (!match) return false;
-
     return match.owners.some(o => codeOwners.includes(o));
 };
 
