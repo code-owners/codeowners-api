@@ -1,6 +1,6 @@
 import {Auth} from '@octokit/rest';
 import {getUserTeamsNames, CodeownerLocator} from './githubApi';
-import {RepoInfo} from './types';
+import {RepoInfo, MappedData} from './types';
 import mapCodeownersFile from './utils/mapCodeownersFile';
 import hasMatch from './utils/hasMatch';
 
@@ -41,13 +41,21 @@ export class Codeowner {
     }
 
     /**
+     * MappedData[] - returns the CODEOWNERS file from the remote repository
+     * as an object that maps between the path and the code owners
+     */
+    public async getCodeownersMap(): Promise<MappedData[]> {
+        const codeowner = await this.getCodeownersFile();
+        return mapCodeownersFile(codeowner);
+    }
+
+    /**
      * Returns a list paths which the authenticated user (from the Auth params in the constructor)
      * Is a CODEOWNER of, This method will also check the user's teams for matches.
      * @param paths - List of strings to match the authenticated user against.
      */
     public async filterForAuthenticatedUser(paths: string[]): Promise<string[]> {
-        const codeowner = await this.getCodeownersFile();
-        const mappedFile = mapCodeownersFile(codeowner);
+        const mappedFile = await this.getCodeownersMap();
 
         const teams = this.auth ? await getUserTeamsNames(this.auth) : [];
         return paths.filter(requestedPath => hasMatch(mappedFile, [...teams], requestedPath));
@@ -60,8 +68,7 @@ export class Codeowner {
      * @param codeowners - List of users and teams to match against.
      */
     public async filterForCodeOwners(paths: string[], codeowners: string[]): Promise<string[]> {
-        const codeowner = await this.getCodeownersFile();
-        const mappedFile = mapCodeownersFile(codeowner);
+        const mappedFile = await this.getCodeownersMap();
         return paths.filter(requestedPath => hasMatch(mappedFile, [...codeowners], requestedPath));
     }
 }
