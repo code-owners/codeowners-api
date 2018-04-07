@@ -22,13 +22,13 @@ describe('filterForCodeOwners', () => {
 
     it('returns no files if file is not listed in CODEOWNERS', async () => {
         setMockedData({
-            codeOwnersFileName: 'CODEOWNERS_1',
+            codeOwnersFileName: 'CODEOWNERS_2',
             mockedUsername: 'oreporan',
             mockedTeam: 'TestOrg/test-team',
         });
 
         const api = new Codeowner(params);
-        const result = await api.filterForCodeOwners(['/not-listed/path.js'], ['@oreporan', '@TestOrg/test-team']);
+        const result = await api.filterForCodeOwners(['not-listed/path.js'], ['@oreporan', '@TestOrg/test-team']);
         expect(result.length).toEqual(0);
     });
 });
