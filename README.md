@@ -64,6 +64,16 @@ Returns `true` if a CODEOWNERS file exists for the given github repo
 #### getCodeownersFile()
 Returns `string` of the CODEOWNERS file in the given repo
 
+#### getCodeownersMap()
+Returns a mapping of the CODEOWNERS file in the given repo.
+i.e 
+```ts
+{
+    '/packages/*', ['owner1', 'owner2'],
+    '/another/*.js', ['team1', 'owner2'],
+}
+```
+
 ## Testing
 `> yarn test` 
 
@@ -89,9 +99,9 @@ Will generate this result:
     const authParams = {type: 'token', token: 'xxxx'}
     
     const codeOwnersApi = new Codeowner(repoParams, authParams);
-    const result = await codeOwnersApi.filterForCodeOwner(
+    const result = await codeOwnersApi.filterForCodeOwners(
         ['/something/a.py', 'tests/something.js', 'tests/something.txt', 'packages/some/deep/dir/index.tsx'],
-        '@elaygl'
+        ['@elaygl']
     );
 
     console.log(result) // [ 'tests/something.txt', 'packages/some/deep/dir/index.tsx' ]
